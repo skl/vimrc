@@ -15,7 +15,7 @@ You need to install exuberant-ctags:
 
     sudo apt-get install exuberant-ctags
 
-You can update all submodules in future by execiting the following:
+You can update all submodules in future by executing the following:
 
     cd ~/.vim
     git submodule foreach git pull origin master
