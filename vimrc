@@ -20,7 +20,7 @@ call pathogen#helptags()
 :set ai                           " set auto-indenting on for programming
 
 :set showcmd                      " display incomplete commnds
-":set list                         " show invisibles
+:set list                         " show invisibles
 :set number                       " show line numbers
 :set ruler                        " show the current row and column
 :set hlsearch
@@ -47,6 +47,7 @@ syntax on
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
 
+:set mouse=a
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
 
@@ -64,7 +65,7 @@ function! Stab()
   endif
   call SummarizeTabs()
 endfunction
-  
+
 function! SummarizeTabs()
   try
     echohl ModeMsg
@@ -85,16 +86,16 @@ endfunction
 if has("autocmd")
   " Enable file type detection
   filetype on
-   
+
   " Syntax of these languages is fussy over tabs Vs spaces
   autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-   
+
   " Customisations based on house-style (arbitrary)
   "autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
   "autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
   "autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
-   
+
   " Treat .rss files as XML
   autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
 endif
