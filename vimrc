@@ -23,6 +23,7 @@ call pathogen#helptags()
 :set number                       " show line numbers
 :set ruler                        " show the current row and column
 :set hlsearch
+:set cursorline
 
 " show fold column, fold by marker
 :set foldcolumn=2
@@ -57,7 +58,26 @@ call pathogen#helptags()
 call pathogen#infect()
 
 " Switch syntax highlighting on
-syntax on
+:syntax on
+:set tags=$HOME/.vim.tags
+:helptags $HOME/.vim.tags
+
+" Load a tag file
+" Loads a tag file from ~/.vim.tags/, based on the argument provided. The
+" command "Ltag"" is mapped to this function.
+:function! LoadTags(file)
+:   let tagspath = $HOME . "/.vim.tags/" . a:file
+:   let tagcommand = 'set tags+=' . tagspath
+:   execute tagcommand
+:endfunction
+:command! -nargs=1 Ltag :call LoadTags("<args>")
+
+" These are tag files I've created; you may want to remove/change these for your
+" own usage.
+":call LoadTags("AccountChange")
+":call LoadTags("FaultsLegacyAdaptors")
+":call LoadTags("Framework")
+":call LoadTags("common_library_functions")
 
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
@@ -140,6 +160,8 @@ let php_htmlInStrings = 1 "for HTML syntax highlighting inside strings
 "php_noShortTags = 1 "don't sync <? ?> as php
 let php_folding = 1 "for folding classes and functions
 " }}}
+
+:let tagspath = "~/.vim.tags/"
 
 " set the names of flags
 let tlist_php_settings = 'php;c:class;f:function;d:constant;p:property'
