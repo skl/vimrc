@@ -7,3 +7,6 @@
 [submodule "bundle/phpcomplete"]
 	path = bundle/phpcomplete
 	url = https://github.com/EvanDotPro/phpcomplete.vim
+[submodule "bundle/vimwiki"]
+	path = bundle/vimwiki
+	url = https://github.com/weierophinney/vimwiki.git
