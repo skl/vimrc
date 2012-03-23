@@ -74,10 +74,8 @@ call pathogen#infect()
 
 " These are tag files I've created; you may want to remove/change these for your
 " own usage.
-":call LoadTags("AccountChange")
-":call LoadTags("FaultsLegacyAdaptors")
-":call LoadTags("Framework")
-":call LoadTags("common_library_functions")
+:call LoadTags("PEAR")
+:call LoadTags("LegacyCodebase")
 
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
@@ -184,15 +182,29 @@ let html_use_css = 1
 
 autocmd BufWritePre *.py,*.js,*.php,*.html,*.htm :call <SID>StripTrailingWhitespaces()
 
+" phpDocumentor comment block generation
+inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i
+nnoremap <C-P> :call PhpDocSingle()<CR>
+vnoremap <C-P> :call PhpDocRange()<CR>
+
 " Run PHP linter on write
-augroup php
-  au BufNewFile,BufRead *.inc,*.php,*.html,*.ihtml,*.php3 set efm=%E,%C%m\ in\ %f\ on\ line\ %l,%CErrors\ parsing\ %f,%C,%Z
-  au BufNewFile,BufRead *.inc,*.php,*.html,*.ihtml,*.php3 set makeprg=php\ -ddisplay_errors=on\ -l\ %
-  au BufWritePost *.inc,*.php,*.html,*.ihtml,*.php3 :make
-augroup END
+"augroup php
+"  au BufNewFile,BufRead *.inc,*.php,*.html,*.ihtml,*.php3 set efm=%E,%C%m\ in\ %f\ on\ line\ %l,%CErrors\ parsing\ %f,%C,%Z
+"  au BufNewFile,BufRead *.inc,*.php,*.html,*.ihtml,*.php3 set makeprg=php\ -ddisplay_errors=on\ -l\ %
+"  au BufWritePost *.inc,*.php,*.html,*.ihtml,*.php3 :make
+"augroup END
 
 " PHP Manual
-autocmd FileType php set keywordprg=/usr/local/zend/bin/pman
+autocmd FileType php set keywordprg=pman
+
+" PHPUnit
+:autocmd FileType php noremap <Leader>u :w!<CR>:!phpunit -d memory-limit=1024M --strict --colors %<CR>
+
+" PHP linter
+:autocmd FileType php noremap <C-L> :w!<CR>:!php -l %<CR>
+
+" PHP Coding Standards
+:autocmd FileType php noremap <Leader>s :w!<CR>:!phpcs --standard=Plusnet %<CR>
 
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif

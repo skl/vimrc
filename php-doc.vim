@@ -70,10 +70,10 @@ let g:pdv_cfg_CommentSingle = "//"
 let g:pdv_cfg_Type = "mixed"
 " let g:pdv_cfg_Package = "Framework"
 " let g:pdv_cfg_Package = "Webdav"
-let g:pdv_cfg_Package = "qaVoice"
+let g:pdv_cfg_Package = ""
 let g:pdv_cfg_Version = ""
-let g:pdv_cfg_Author = "Tobias Schlitt <toby@qafoo.com>"
-let g:pdv_cfg_Copyright = "Copyright (C) 2010 Qafoo GmbH. All rights reserved."
+let g:pdv_cfg_Author = "Stephen Lang <slang@plus.net>"
+let g:pdv_cfg_Copyright = ""
 let g:pdv_cfg_License = ""
 
 " TOB: let g:pdv_cfg_Type = "mixed"
@@ -86,7 +86,7 @@ let g:pdv_cfg_License = ""
 let g:pdv_cfg_ReturnVal = "void"
 
 " Wether to create @uses tags for implementation of interfaces and inheritance
-let g:pdv_cfg_Uses = 0
+let g:pdv_cfg_Uses = 1
 " TOB: let g:pdv_cfg_Uses = 1
 
 " Options
