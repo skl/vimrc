@@ -34,7 +34,7 @@ call pathogen#helptags()
 :set shiftwidth=4
 :set softtabstop=4
 :set expandtab
-:set textwidth=80
+:set textwidth=120
 :set encoding=utf-8
 
 :set visualbell t_vb=             " turn off error beep/flash
@@ -221,5 +221,21 @@ command! Phpcs execute RunPhpcs()
 
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+function! Cp()
+    set mouse=""
+    set fdc=0
+    set nonu
+    set nolist
+endfunction
+command! Cp execute Cp()
+
+function! NoCp()
+    set mouse=a
+    set fdc=2
+    set nu
+    set list
+endfunction
+command! NoCp execute NoCp()
 
 color blackboard
