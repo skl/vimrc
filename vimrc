@@ -74,8 +74,7 @@ call pathogen#infect()
 
 " These are tag files I've created; you may want to remove/change these for your
 " own usage.
-:call LoadTags("PEAR")
-:call LoadTags("LegacyCodebase")
+":call LoadTags("PEAR")
 
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
@@ -208,7 +207,7 @@ autocmd FileType php set keywordprg=pman
 
 function! RunPhpcs()
     let l:filename=@%
-    let l:phpcs_output=system('phpcs --report=csv --standard=Plusnet '.l:filename)
+    let l:phpcs_output=system('phpcs --report=csv '.l:filename)
 "    echo l:phpcs_output
     let l:phpcs_list=split(l:phpcs_output, "\n")
     unlet l:phpcs_list[0]
