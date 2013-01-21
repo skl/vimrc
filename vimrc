@@ -19,11 +19,15 @@ call pathogen#helptags()
 :set ai                           " set auto-indenting on for programming
 
 :set showcmd                      " display incomplete commnds
-:set list                         " show invisibles
+":set list                         " show invisibles
 :set number                       " show line numbers
 :set ruler                        " show the current row and column
 :set hlsearch
 :set cursorline
+
+:set wrap " doesn't appear to be working...
+":set linebreak                   " only wrap on enter
+:set nolist                       " list disables linebreak
 
 " show fold column, fold by marker
 :set foldcolumn=2
@@ -34,7 +38,8 @@ call pathogen#helptags()
 :set shiftwidth=4
 :set softtabstop=4
 :set expandtab
-:set textwidth=120
+:set textwidth=0
+:set wrapmargin=0
 :set encoding=utf-8
 
 :set visualbell t_vb=             " turn off error beep/flash
@@ -59,8 +64,8 @@ call pathogen#infect()
 
 " Switch syntax highlighting on
 :syntax on
-:set tags=$HOME/.vim.tags
-:helptags $HOME/.vim.tags
+":set tags=$HOME/.vim.tags
+":helptags $HOME/.vim.tags
 
 " Load a tag file
 " Loads a tag file from ~/.vim.tags/, based on the argument provided. The
